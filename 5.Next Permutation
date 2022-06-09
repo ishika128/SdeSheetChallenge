@@ -1,0 +1,73 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Solution 
+{
+	public static ArrayList<Integer>nextPermutation(ArrayList<Integer> p) 
+	{
+		int size = p.size();
+        if(size==1)
+        {
+            return p ;
+        }
+        else
+        {
+            int i = size-2 ;
+            while(i>=0 && p.get(i)>p.get(i+1))
+            {
+                i-- ;
+                
+            }
+            
+            
+            int index1 = i ; 
+            if(index1==-1)
+            {
+                  int start = 0 ;
+              int back = p.size()-1 ;
+              while(start<back)
+           {
+            int temp = p.get(start);
+            p.set(start,p.get(back));
+            p.set(back , temp);
+            start++ ;
+            back-- ;
+            
+           }
+                return p ;
+            }
+            for(int j = p.size()-1 ; j>index1; j-- )
+            {
+                if(p.get(j)>p.get(index1))
+                {
+                    int temp = p.get(j) ;
+                    p.set(j , p.get(i));
+                    p.set(i, temp) ;
+                    break ;
+                   
+                }
+                
+            }
+              int start = index1 +1 ;
+              int back = p.size()-1 ;
+              while(start<back)
+           {
+            int temp = p.get(start);
+            p.set(start,p.get(back));
+            p.set(back , temp);
+            start++ ;
+            back-- ;
+            
+           }
+            
+            
+        }
+        return p ;
+     
+        
+        
+        
+	}
+}
